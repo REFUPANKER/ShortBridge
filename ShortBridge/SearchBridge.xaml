@@ -1,0 +1,59 @@
+﻿<Window x:Class="ShortBridge.SearchBridge"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShortBridge"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        Topmost="True"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing"
+        Title="Search Bridge Links" Height="500" Width="450">
+    <Border Background="#252525" CornerRadius="30" Padding="15">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" MouseDown="Window_MouseDown" MouseMove="Window_MouseMove" Cursor="SizeAll">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{DynamicResource NavButtonStyle}" Background="Red" HorizontalAlignment="Left" Width="20" VerticalAlignment="Center" Height="20" Margin="5,0,5,0" x:Name="btn_CloseSearchBridge" Click="btn_CloseSearchBridge_Click"></Button>
+                <Label Foreground="White" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="10" Content="Search Bridge Link"></Label>
+            </Grid>
+            <Border Grid.Row="1" Background="#151515" CornerRadius="10">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" FontSize="10" Foreground="White">Type Name (press enter to search)</Label>
+                    <TextBox VerticalContentAlignment="Center" Grid.Row="1" x:Name="txtbox_BridgeName" Background="#404040" KeyDown="txtbox_BridgeName_KeyDown" Foreground="White"></TextBox>
+                </Grid>
+            </Border>
+            <Border Grid.Row="2" CornerRadius="10" Background="#151515"  Margin="0,5,0,0">
+                <ScrollViewer  VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="BridgeLinksHolder">
+                        <!--<Border Margin="5" Background="#303030" CornerRadius="5" Cursor="Hand">
+                            <StackPanel Margin="2">
+                                <Label Foreground="White" FontSize="13" Padding="0">Link Name</Label>
+                                <Label Foreground="Silver" FontSize="7" Padding="0">Link</Label>
+                            </StackPanel>
+                        </Border>-->
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+            <StackPanel Grid.Row="3">
+                <Label Padding="0" Foreground="Silver" >LMB : Open Link | RMB: Remove Link</Label>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
