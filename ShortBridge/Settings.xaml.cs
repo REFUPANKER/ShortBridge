@@ -41,7 +41,6 @@ namespace ShortBridge
 			else
 			{
 				dbm.AddLink(txt_LinkName.Text, txt_SelectedPath.Text);
-				MessageBox.Show("bridge added");
 			}
         }
 

@@ -46,6 +46,7 @@ namespace ShortBridge
 		{
 			minLinkId = -2;
 			maxLinkId = -1;
+			BridgeLinksHolder.Children.Clear();
 			ShowBridgeLinks();
 		}
 
@@ -53,7 +54,9 @@ namespace ShortBridge
 		{
 			minLinkId = -2;
 			maxLinkId = -1;
+			BridgeLinksHolder.Children.Clear();
 			ShowBridgeLinks();
+			MessageBox.Show("bridge added");
 		}
 
 		private void btn_Exit_Click(object sender, RoutedEventArgs e)
@@ -100,7 +103,6 @@ namespace ShortBridge
 		public void ShowBridgeLinks(bool pre = false)
 		{
 			List<DB_BridgeLink> links = dbm.GetLinks(pre ? minLinkId : maxLinkId, displayLimit, pre);
-			BridgeLinksHolder.Children.Clear();
 			if (links.Count <= 0)
 			{
 				lbl_BridgeCount.Content="no bridges";
@@ -114,16 +116,16 @@ namespace ShortBridge
 				{
 					CreateBridgeLink(item);
 				}
-
 			}
 		}
 
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
 			ShowBridgeLinks();
-
-			//this.Height = this.ActualHeight + Math.Clamp(BridgeLinksHolder.Children.Count * 50, 50, this.ActualHeight / 2);
+			
+			this.Height = this.ActualHeight + Math.Clamp(BridgeLinksHolder.Children.Count * 50, 50, this.ActualHeight / 2);
 			this.Top = (SystemParameters.PrimaryScreenHeight / 2) - (this.ActualHeight / 2);
+			
 		}
 
 		public void CreateBridgeLink(DB_BridgeLink item)
